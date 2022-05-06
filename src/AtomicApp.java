@@ -11,21 +11,17 @@ private AtomicInteger count = new AtomicInteger(0);
     }
 
     private void doWork() throws InterruptedException {
-        Thread t1 = new Thread() {
-            public void run() {
-                for (int i = 0; i < 10000; i++) {
-    count.incrementAndGet();
-                }
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 10000; i++) {
+count.incrementAndGet();
             }
-        };
+        });
 
-        Thread t2 = new Thread() {
-            public void run() {
-                for (int i = 0; i < 10000; i++) {
-                    count.incrementAndGet();
-                }
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 10000; i++) {
+                count.incrementAndGet();
             }
-        };
+        });
 
         t1.start();
         t2.start();
