@@ -11,7 +11,7 @@ public class Test {
     private void doWork1() {
         synchronized (lock1) {
             try {
-                Thread.sleep(5000);
+                Thread.sleep(500);
             } catch (InterruptedException exception) {
                 exception.printStackTrace();
                 synchronized (lock2) {
@@ -19,14 +19,12 @@ public class Test {
                 }
             }
         }
-
-
     }
 
     private void doWork2() {
         synchronized (lock2) {
             try {
-                Thread.sleep(5005);
+                Thread.sleep(500);
             } catch (InterruptedException exception) {
                 exception.printStackTrace();
                 synchronized (lock1) {
@@ -34,9 +32,7 @@ public class Test {
                 }
             }
         }
-        synchronized (lock2) {
 
-        }
     }
 
     public static void main(String[] args) {
